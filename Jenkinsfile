@@ -7,25 +7,24 @@ pipeline {
 
   environment {
     VAULT_TOKEN = credentials('vault_token')
+    VAULT_ADDR = "https://vault-1.hvvc.local:8200"
+    VAULT_SKIP_VERIFY = 1
   }
 
   stages {
-    stage('pre-build') {
+    stage('init') {
       steps {
-        echo 'this is the pre build stage'
-        sh 'terraform-0.12 version'
-        sh 'vault version'
-        sh 'terraform init'
+        sh 'terraform-0.12 init'
       }
     }
     stage('plan') {
       steps {
-        sh 'terraform plan -out planned-sample'
+        sh 'terraform-0.12 plan -out planned-sample'
       }
     }
     stage('apply') {
       steps {
-        sh 'terraform apply'
+        sh 'terraform-0.12 apply'
       }
     }
   }
