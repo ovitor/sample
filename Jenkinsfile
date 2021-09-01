@@ -8,7 +8,7 @@ pipeline {
     environment {
       VAULT_TOKEN = credentials('vault_token')
       VAULT_ADDR = "https://vault-1.hvvc.local:8200"
-      VAULT_SKIP_VERIFY = True
+      VAULT_SKIP_VERIFY = 1
     }
 
     stages {
