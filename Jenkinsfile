@@ -7,7 +7,7 @@ pipeline {
 
     environment {
       VAULT_TOKEN = credentials('vault_token')
-      VAULT_ADDR = "https://vaultui.stacklocity.net:8200"
+      VAULT_ADDR = "https://vault-1.hvvc.local:8200"
     }
 
     stages {
