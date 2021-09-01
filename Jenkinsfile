@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    triggers {
+      pollSCM('*/5 * * * *')
+    }
+
     environment {
       VAULT_TOKEN = credentials('vault_token')
       VAULT_ADDR = "https://vaultui.stacklocity.net:8200"
